@@ -20,6 +20,8 @@
 #include "pseudo.h"
 #include "pseudo_ipc.h"
 
+pseudo_access_t_enum pseudo_access_t;
+
 /* Short reads or writes can cause a sigpipe, killing the program, so
  * we trap it and report that something happened. We can avoid the
  * overhead of setting/restoring the SIGPIPE handler if MSG_NOSIGNAL

@@ -29,12 +29,15 @@ typedef struct {
 	char path[];
 } pseudo_msg_t;
 
-enum {
+enum pseudo_access_t_enum {
 	PSA_EXEC = 1,
 	PSA_WRITE = (PSA_EXEC << 1),
 	PSA_READ = (PSA_WRITE << 1),
-	PSA_APPEND = (PSA_READ << 1),
-} pseudo_access_t;
+	PSA_APPEND = (PSA_READ << 1)
+};
+
+typedef enum pseudo_access_t_enum pseudo_access_t_enum;
+extern pseudo_access_t_enum pseudo_access_t;
 
 #define PSEUDO_ACCESS_MAP(mode, fcntl_access, pseudo_access) ((((mode) & O_ACCMODE) == (fcntl_access)) ? (pseudo_access) : (0))
 #define PSEUDO_ACCESS_FLAG(mode, fcntl_access, pseudo_access) (((mode) & (fcntl_access)) ? (pseudo_access) : (0))
